@@ -1,12 +1,16 @@
 # BSS-Project
+
 Breaktime Sensing System is being develop to increase the productivity in work environments, 
 encouraging stress-free workplaces and improving interpersonal skills.
----------------------------------------------------------------------------------------------
-Team members:
-Raúl Alberto Mira Rodríguez
-Roberto Andres Yoncón Chootong
-----------------------------------------------------------------------------------------------
-Project description:
+
+###Team members:
+
+- Raúl Alberto Mira Rodríguez @RaulMira0812
+- Roberto Andres Yoncón Chootong @CrobbyStyle
+
+
+###Project description:
+
 BSS-Project is a system for the strategic allocation of break times in a work environment,
 is an ubicuos, privacy preserving system that comprises of a hardware arrangement of sensors:
 temperature, humidity, noise and voice level, those parameters are sent periodically through 
