@@ -1,11 +1,38 @@
 @extends('layout')
+
+@section('otherDependencies')
+    <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
+@endsection
+
 @section('content')
-    <div class="container col-sm-12 col-md-12 col-lg-12">
-        <div class="logo col-sm-1 col-md-1 col-lg-1">
-            <img src="{{ asset('/clock.ico') }}" style="width:150px;height:150px;">
+<script>
+    $(function(){
+        $("#tempSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#humiSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#noisSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#voicSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+    });
+</script>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ asset('/clock.ico') }}" style="max-width:50px; height:auto;">
         </div>
-        <div class="content col-sm-10 col-md-10 col-lg-10">
+        <div class="content">
             <div class="title">Breaktime Sensing System - BSS</div>
+        </div>
+        <div class="controls">
+            <div id="tempControl" style="padding-top: 3%">
+                <div id="tempSlider"></div>
+            </div>
+            <div id="humiControl" style="padding-top: 3%">
+                <div id="humiSlider"></div>
+            </div>
+            <div id="noisControl" style="padding-top: 3%">
+                <div id="noisSlider"></div>
+            </div>
+            <div id="voicControl" style="padding-top: 3%">
+                <div id="voicSlider"></div>
+            </div>
         </div>
     </div>
 @endsection
