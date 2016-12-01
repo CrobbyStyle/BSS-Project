@@ -17,10 +17,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="1">
+        android:layout_alignParentStart="true">
 
         <Button
         android:id="@+id/button1"
@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="#516055"
-        android:background="@drawable/mybutton"
+        android:background="@drawable/mybutton2"
         android:text="Breaktime Sensing Sytem"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:backgroundTint="#edfcdb"
             android:clickable="false" />
 
@@ -47,18 +47,33 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="#516055"
-            android:background="@drawable/mybutton"
+            android:background="@drawable/mybutton2"
             android:text="Aplicacion de alerta"
             android:textSize="18sp"
             android:backgroundTint="#edfcdb"
             android:enabled="false"
             android:clickable="false" />
 
-        <ImageView
+        <Button
+            android:text="Button"
             android:layout_width="match_parent"
-            android:layout_height="298dp"
-            app:srcCompat="@mipmap/ic_clock"
-            android:id="@+id/imageView2" />
+            android:layout_height="16dp"
+            android:id="@+id/button"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="302dp"
+            android:layout_height="171dp"
+            app:srcCompat="@drawable/breaktime"
+            android:id="@+id/imageView4"
+            android:layout_weight="0.67" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:id="@+id/button4"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/button5"
@@ -68,8 +83,7 @@
             android:textColor="#516055"
             android:background="@drawable/mybutton"
             android:text="CONECTARSE"
-            android:textSize="26sp"
-            android:layout_weight="0.50" />
+            android:textSize="26sp" />
 
     </LinearLayout>
 
