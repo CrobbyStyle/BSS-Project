@@ -2,7 +2,7 @@
 
 @section('otherDependencies')
     <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
-	 
+    <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
 @endsection
 
 @section('content')
@@ -68,6 +68,34 @@
 	};
 	
 </script>
+<script>
+            //instantiate a Pusher object with our Credential's key
+            var pusher = new Pusher('{{env("PUSHER_KEY")}}');
+
+            //Subscribe to the channel we specified in our Laravel Event
+            var channel = pusher.subscribe('my-channel');
+
+            //Bind a function to a Event (the full Laravel class)
+            channel.bind('App\\Events\\HelloPusherEvent', addMessage);
+
+            function addMessage(data)
+            {
+
+                var listItem = $("<li class='list-group-item'></li>");
+
+                var elem1 = document.getElementById("myBar1"); 
+				var elem2 = document.getElementById("myBar2"); 
+				var elem3 = document.getElementById("myBar3"); 
+				var elem4 = document.getElementById("myBar4"); 
+				elem1.style.width = data.message.split(",")[0] + '%';
+				elem2.style.width = data.message.split(",")[1] + '%';
+				elem3.style.width = data.message.split(",")[2] + '%';
+				elem4.style.width = data.message.split(",")[3] + '%';
+
+                listItem.html(data.message);
+                $('#messages').prepend(listItem);
+            }
+        </script>
 	
     <div  class="container">
         <div class="cabecera">
@@ -212,6 +240,8 @@
 				</div>
 			</tr>
 		</table>
+		<ul id="messages" class="list-group">
+
 		</br>
 		
         

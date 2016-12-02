@@ -18,3 +18,10 @@ Route::get('/', function () {
 Route::get('/admin', function () {
 	return view('admin');
 });
+
+Route::get('/pusher', function() {
+	
+    event(new App\Events\HelloPusherEvent("25,23,30,40"));
+
+    return view('test');
+});
