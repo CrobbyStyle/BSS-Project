@@ -8,11 +8,11 @@
 @section('content')
 <script>
     $(function(){
-        $("#tempSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#tempSlider").slider({animate:"slow", min:-50, max: 50}).slider("float").slider("pips",{first:"pip",last:"pip"});
         $("#humiSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
-        $("#noisSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
-        $("#voicSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
-		$("#clockSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#noisSlider").slider({animate:"slow", max: 180, step: 5}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        $("#voicSlider").slider({animate:"slow", min: 250, max: 3000, step: 50}).slider("float").slider("pips",{first:"pip",last:"pip"});
+		$("#clockSlider").slider({animate:"slow", max: 60}).slider("float").slider("pips",{first:"pip",last:"pip"});
     });
 	window.onload = 
 	  function move() {
