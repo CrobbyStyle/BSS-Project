@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="619b7322-99a4-40b1-8a42-22176d66e666" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/src/androidTest/java/ec/edu/espol/fiec/bss/ExampleInstrumentedTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/src/main/java/ec/edu/espol/fiec/bss/MainActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/src/test/java/ec/edu/espol/fiec/bss/ExampleUnitTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/.idea/gradle.xml" afterPath="$PROJECT_DIR$/BSS-Android/BSS/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/.idea/misc.xml" afterPath="$PROJECT_DIR$/BSS-Android/BSS/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/build.gradle" afterPath="$PROJECT_DIR$/BSS-Android/BSS/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/BSS-Android/BSS/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/BSS-Android/BSS/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Android/BSS/build.gradle" afterPath="$PROJECT_DIR$/BSS-Android/BSS/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/app/Http/Controllers/RepositorioController.php" afterPath="$PROJECT_DIR$/BSS-Project/app/Http/Controllers/RepositorioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/app/Http/routes.php" afterPath="$PROJECT_DIR$/BSS-Project/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/resources/views/notification.blade.php" afterPath="$PROJECT_DIR$/BSS-Project/resources/views/notification.blade.php" />
     </list>
     <ignored path="BSS-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -405,7 +396,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="24" width="1323" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

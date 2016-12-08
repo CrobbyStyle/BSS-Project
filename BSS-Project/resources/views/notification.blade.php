@@ -55,8 +55,8 @@
         error_reporting(-1);
         ini_set('display_errors', 'On');
  
-        require_once __DIR__ . '/bss-config/firebase.php';
-        require_once __DIR__ . '/bss-config/push.php';
+        require_once (app_path() . '/bss-config/firebase.php');
+        require_once (app_path() . '/bss-config/push.php');
  
         $firebase = new Firebase();
         $push = new Push();
