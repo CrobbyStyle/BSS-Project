@@ -53,15 +53,19 @@ public class MainActivity extends AppCompatActivity  {
 
                 } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
                     // new push notification is received
+                    if(pressed==true) {
 
-                    String message = intent.getStringExtra("message");
+                        String message = intent.getStringExtra("message");
+                        Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                        //txtMessage.setText(message);
+                        displayAlert();
 
-                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                    }
 
-                    txtMessage.setText(message);
                 }
             }
         };
+
 
         displayFirebaseRegId();
 
@@ -107,7 +111,18 @@ public class MainActivity extends AppCompatActivity  {
             txtRegId.setText("Firebase Reg Id: " + regId);
         else
             txtRegId.setText("Firebase Reg Id is not received yet!");
+
+
     }
+
+    private void displayAlert()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("BREAKTIME");
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     @Override
     protected void onResume() {
@@ -132,7 +147,15 @@ public class MainActivity extends AppCompatActivity  {
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
 
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 
 }

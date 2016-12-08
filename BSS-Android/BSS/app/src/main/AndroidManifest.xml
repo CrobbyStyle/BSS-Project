@@ -28,6 +28,8 @@
             </intent-filter>
         </service>
         <!-- ./Firebase Notifications -->
+
     </application>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
 </manifest>
