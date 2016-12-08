@@ -20,3 +20,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/pusher', 'RepositorioController@pushAlert');
+
+Route::get('/notification', function () {
+	return view('notification');
+});
