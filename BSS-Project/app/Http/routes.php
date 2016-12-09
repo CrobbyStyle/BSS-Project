@@ -19,7 +19,8 @@ Route::get('/admin', function () {
 	return view('admin');
 });
 
-Route::get('/pusher', 'RepositorioController@pushAlert');
+Route::get('/pusher', 'RepositorioController@index');
+Route::post('/enviarParametros', 'RepositorioController@pushAlert');
 
 Route::get('/notification', function () {
 	return view('notification');

@@ -50,25 +50,25 @@ body {
     position: absolute;
     width: 10%;
     height: 100%;
-    background-color: red;
+    background-color: #ff5a5a;
 }
 #myBar2 {
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: blue;
+    background-color: #3b5fe1;
 }
 #myBar3 {
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: yellow;
+    background-color: #e7c311;
 }
 #myBar4 {
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: green;
+    background-color: #0dca01;
 }
 #label1 {
     text-align: center; /* If you want to center it */
@@ -92,7 +92,7 @@ body {
 }
 
 #tempSlider.ui-slider {
-background: #ff0000;
+background: #ff5a5a;
 border: none;
 border-radius: 20px; }
 
@@ -259,25 +259,25 @@ background-color: #0dca01;
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: red;
+    background-color: #ff5a5a;
 }
 #myBar2 {
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: blue;
+    background-color: #3b5fe1;
 }
 #myBar3 {
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: yellow;
+    background-color: #e7c311;
 }
 #myBar4{
     position: absolute;
     width: 1%;
     height: 100%;
-    background-color: green;
+    background-color: #0dca01;
 }
 #label1 {
     text-align: center; /* If you want to center it */
@@ -301,7 +301,7 @@ background-color: #0dca01;
 }
 
 #tempSlider.ui-slider {
-background: #ff0000;
+background: #ff5a5a;
 border: none;
 border-radius: 20px; }
 

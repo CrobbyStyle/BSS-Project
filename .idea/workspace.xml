@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="619b7322-99a4-40b1-8a42-22176d66e666" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/app/Http/Controllers/RepositorioController.php" afterPath="$PROJECT_DIR$/BSS-Project/app/Http/Controllers/RepositorioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/resources/views/notification.blade.php" afterPath="$PROJECT_DIR$/BSS-Project/resources/views/notification.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/app/Http/routes.php" afterPath="$PROJECT_DIR$/BSS-Project/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/resources/views/admin.blade.php" afterPath="$PROJECT_DIR$/BSS-Project/resources/views/admin.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BSS-Project/resources/views/test.blade.php" afterPath="$PROJECT_DIR$/BSS-Project/resources/views/test.blade.php" />
     </list>
     <ignored path="BSS-Project.iws" />
     <ignored path=".idea/workspace.xml" />

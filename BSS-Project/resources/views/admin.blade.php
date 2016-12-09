@@ -83,17 +83,34 @@
 
                 var listItem = $("<li class='list-group-item'></li>");
 
-                var elem1 = document.getElementById("myBar1"); 
-				var elem2 = document.getElementById("myBar2"); 
-				var elem3 = document.getElementById("myBar3"); 
-				var elem4 = document.getElementById("myBar4"); 
-				elem1.style.width = data.message.split(",")[0] + '%';
-				elem2.style.width = data.message.split(",")[1] + '%';
-				elem3.style.width = data.message.split(",")[2] + '%';
-				elem4.style.width = data.message.split(",")[3] + '%';
+                var val1 = data.message.split(",")[0];
+                var val2 = data.message.split(",")[1];
+                var val3 = data.message.split(",")[2];
+                var val4 = data.message.split(",")[3];
 
-                listItem.html(data.message);
-                $('#messages').prepend(listItem);
+                var elem1 = document.getElementById("myBar1"); 
+                var elem2 = document.getElementById("myBar2"); 
+                var elem3 = document.getElementById("myBar3"); 
+                var elem4 = document.getElementById("myBar4");
+
+                var label1 = document.getElementById("label1");				
+				var label2 = document.getElementById("label2");
+				var label3 = document.getElementById("label3");				 
+				var label4 = document.getElementById("label4");
+				
+
+				elem1.style.width = val1 + '%';
+				elem2.style.width = val2 + '%';
+				elem3.style.width = val3 + '%';
+				elem4.style.width = val4 + '%';
+
+				label1.innerHTML = val1;
+				label2.innerHTML = val2;
+				label3.innerHTML = val3;
+				label4.innerHTML = val4;
+
+                // listItem.html(data.message);
+                // $('#messages').prepend(listItem);
             }
         </script>
 	
@@ -129,7 +146,7 @@
 						</tr>
 						<tr>
 							<td style="width:10%;" >
-								<img  src="{{ asset('/2.png') }}" style="width:100% ; height:auto;">
+								<img  src="{{ asset('/3.png') }}" style="width:100% ; height:auto;">
 							</td>
 							<td style="width:85%;" >
 								<div id="humiControl" style=" padding-top: 3%; padding-left: 5%; padding-right: 5%;">
@@ -141,7 +158,7 @@
 						</tr>
 						<tr>
 							<td style="width:10%;" >
-								<img  src="{{ asset('/3.png') }}" style="width:100% ; height:auto;">
+								<img  src="{{ asset('/2.png') }}" style="width:100% ; height:auto;">
 							</td>
 							<td style="width:85%;" >
 								<div id="noisControl" style="padding-top: 3%; padding-left: 5%; padding-right: 5%;">
@@ -206,7 +223,7 @@
 							<tr>
 								<td style="width:95%;" >
 									<div id="myProgress">
-									  <div id="myBar4"><div id="label4">45000</div></div>
+									  <div id="myBar4"><div id="label4">45</div></div>
 									  
 									</div>
 								</td>
@@ -240,7 +257,7 @@
 				</div>
 			</tr>
 		</table>
-		<ul id="messages" class="list-group">
+<!-- 		<ul id="messages" class="list-group"> -->
 
 		</br>
 		

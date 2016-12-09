@@ -31,10 +31,10 @@
 
 <div class="stripe no-padding-bottom numbered-stripe">
     <div class="fixed wrapper">
-        <ol class="strong" start="2">
+        <ol class="strong" start="1">
             <li>
                 <div class="hexagon"></div>
-                <h2><b>Real-Time Chat</b> <small>Fundamental real-time communication.</small></h2>
+                <h2><b>Testing</b> <small>BSS - Pusher WebSockets</small></h2>
             </li>
         </ol>
     </div>
@@ -51,6 +51,7 @@
             </div>
 
             <div class="action-bar">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <textarea class="input-message col-xs-10" placeholder="Your message"></textarea>
                 <div class="option col-xs-1 white-background">
                     <span class="fa fa-smile-o light-grey"></span>
@@ -63,7 +64,83 @@
         </div>
     </div>
 </section>
-
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        }
+    });
+    function init() {
+        // send button click handling
+        $('.send-message').click(sendMessage);
+        $('.input-message').keypress(checkSend);
+    }
+    // Send on enter/return key
+    function checkSend(e) {
+        if (e.keyCode === 13) {
+            return sendMessage();
+        }
+    }
+    // Handle the send button being clicked
+    function sendMessage() {
+        var messageText = $('.input-message').val();
+        if(messageText.length < 3) {
+            return false;
+        }
+        // Build POST data and make AJAX request
+        var data = {chat_text: messageText};
+        $.ajax({
+            type: "POST",
+            url: '/enviarParametros',
+            data: {
+                'chat_text' : messageText
+            },
+            dataType: 'html',
+            success: function(){
+                var messages = $('#messages');
+                sendMessageSuccess();
+                messages.prepend(messageText);
+                messages.prepend("<br/>");
+            },
+            error: function(xhr, status, error) {
+                  alert(xhr.responseText);
+                }
+        });
+        // $.post('/enviarParametros', data).success(sendMessageSuccess);
+        // Ensure the normal browser event doesn't take place
+        return false;
+    }
+    // Handle the success callback
+    function sendMessageSuccess() {
+        $('.input-message').val('')
+        console.log('message sent successfully');
+    }
+    // Build the UI for a new message and add to the DOM
+    function addMessage(data) {
+        // Create element from template and set values
+        var el = createMessageEl();
+        el.find('.message-body').html(data.text);
+        el.find('.author').text(data.username);
+        el.find('.avatar img').attr('src', data.avatar)
+        
+        // Utility to build nicely formatted time
+        el.find('.timestamp').text(strftime('%H:%M:%S %P', new Date(data.timestamp)));
+        
+        var messages = $('#messages');
+        messages.append(el)
+        
+        // Make sure the incoming message is shown
+        messages.scrollTop(messages[0].scrollHeight);
+    }
+    // Creates an activity element from the template
+    function createMessageEl() {
+        var text = $('#chat_message_template').text();
+        var el = $(text);
+        return el;
+    }
+    $(init);
+    /***********************************************/
+</script>
 
 </body>
 </html>

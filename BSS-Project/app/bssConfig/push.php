@@ -1,5 +1,6 @@
 <?php
- 
+  namespace App\bssConfig;
+
 /**
  * @author Ravi Tamada
  * @link URL Tutorial link
