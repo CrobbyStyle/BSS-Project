@@ -24,47 +24,60 @@ class RepositorioController extends Controller
 	public function pushAlert(Request $request){
         $message= $request->input('chat_text');
 
-        $current = file_get_contents("../storage/app/bss-storage/datos.txt");
+        $current = file_get_contents(app_path()."/bssStorage/datos.txt");
         $current .= $message."\n";
-        file_put_contents("../storage/app/bss-storage/datos.txt", $current);
+        file_put_contents(app_path()."/bssStorage/datos.txt", $current);
 
 		event(new HelloPusherEvent($message));
 
-        error_reporting(-1);
-        ini_set('display_errors', 'On');
- 
-        $firebase = new Firebase();
-        $push = new Push();
-  
-        $payload = array();
-        $payload['team'] = 'India';
-        $payload['score'] = '5.6';
-        // notification title
-        $title = 'BSS: Alerta de Prueba para materia integradora';
-         
-        // notification message
-        $message = 'Se aconseja tomar un receso';
-         
-        // push type - single user / topic
-        $push_type = 'topic';
- 
- 
-        $push->setTitle($title);
-        $push->setMessage($message);
-        $push->setIsBackground(FALSE);
-        $push->setPayload($payload);
- 
- 
-        $json = '';
-        $response = '';
-        error_log("A ENVIAR PUSH");
-        if ($push_type == 'topic') {
-            $json = $push->getPush();
-            $response = $firebase->sendToTopic('global', $json);
-            error_log("ENVIANDO");
-            error_log(json_encode($json));
+        $listSubstr = explode(",", $message);
+        $val1 = intval($listSubstr[0]);
+        $val2 = intval($listSubstr[1]);
+        $val3 = intval($listSubstr[2]);
+        $val4 = intval($listSubstr[3]);
+
+        if($val1>69){
+            if($val2>69){
+                if($val3>69){
+                    if($val4>69){
+                        error_reporting(-1);
+                        ini_set('display_errors', 'On');
+                 
+                        $firebase = new Firebase();
+                        $push = new Push();
+                  
+                        $payload = array();
+                        $payload['team'] = 'Ecuador';
+                        $payload['score'] = '9.9';
+                        $title = 'BSS: Alerta de Prueba para materia integradora';
+                        $message = 'Se aconseja tomar un receso';
+                        $push_type = 'topic';
+                 
+                 
+                        $push->setTitle($title);
+                        $push->setMessage($message);
+                        $push->setIsBackground(FALSE);
+                        $push->setPayload($payload);
+                 
+                        $json = '';
+                        $response = '';
+                        error_log("A ENVIAR PUSH");
+                        if ($push_type == 'topic') {
+                            $json = $push->getPush();
+                            $response = $firebase->sendToTopic('global', $json);
+                            error_log("ENVIANDO");
+                            error_log(json_encode($json));
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
         
+
     }
 
 }
