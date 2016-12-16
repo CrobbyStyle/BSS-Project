@@ -36,10 +36,18 @@ class RepositorioController extends Controller
         $val3 = intval($listSubstr[2]);
         $val4 = intval($listSubstr[3]);
 
-        if($val1>69){
-            if($val2>69){
-                if($val3>69){
-                    if($val4>69){
+        $configValues = file_get_contents(app_path()."/bssStorage/config.txt");
+        $listaValores = explode(",", $configValues);
+        $valTemp = intval($listaValores[0]);
+        $valHumi = intval($listaValores[1]);
+        $valNois = intval($listaValores[2]);
+        $valVoic = intval($listaValores[3]);
+        $valClock = intval($listaValores[4]);
+
+        if($val1>$valTemp){
+            if($val2>$valHumi){
+                if($val3>$valNois){
+                    if($val4>$valVoic){
                         error_reporting(-1);
                         ini_set('display_errors', 'On');
                  
@@ -78,6 +86,37 @@ class RepositorioController extends Controller
         }
         
 
+    }
+
+    public function guardarConfig(Request $request){
+        $valorTemp=$request->valorTemp;
+        $valorHumi = $request->valorHumi;
+        $valorNois=$request->valorNois;
+        $valorVoic = $request->valorVoic;
+        $valorClock=$request->valorClock;
+
+        $message = $valorTemp.",".$valorHumi.",".$valorNois.",".$valorVoic.",".$valorClock. "\n";
+        file_put_contents(app_path()."/bssStorage/config.txt", $message);
+
+        error_log($message);
+    }
+
+    public function mostrarAdmin(){
+        $current = file_get_contents(app_path()."/bssStorage/config.txt");
+        $listSubstr = explode(",", $current);
+        $val1 = intval($listSubstr[0]);
+        $val2 = intval($listSubstr[1]);
+        $val3 = intval($listSubstr[2]);
+        $val4 = intval($listSubstr[3]);
+        $val5 = intval($listSubstr[4]);
+        $args = array(
+                    'valTemp'=> $val1,
+                    'valHumi'=> $val2,
+                    'valNois'=> $val3,
+                    'valVoic'=> $val4,
+                    'valClock'=> $val5,
+                    );
+        return view('admin')->with($args);
     }
 
 }

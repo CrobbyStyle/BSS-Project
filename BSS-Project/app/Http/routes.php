@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-	return view('admin');
-});
+Route::get('/admin', 'RepositorioController@mostrarAdmin');
 
 Route::get('/pusher', 'RepositorioController@index');
 Route::post('/enviarParametros', 'RepositorioController@pushAlert');
@@ -25,3 +23,5 @@ Route::post('/enviarParametros', 'RepositorioController@pushAlert');
 Route::get('/notification', function () {
 	return view('notification');
 });
+
+Route::post('/guardarConfiguracion', 'RepositorioController@guardarConfig');

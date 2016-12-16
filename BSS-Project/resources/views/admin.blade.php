@@ -7,12 +7,16 @@
 
 @section('content')
 <script>
+	console.log('<?php echo $valTemp ?>');
     $(function(){
-        $("#tempSlider").slider({animate:"slow", min:-50, max: 50}).slider("float").slider("pips",{first:"pip",last:"pip"});
-        $("#humiSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"});
-        $("#noisSlider").slider({animate:"slow", max: 180, step: 5}).slider("float").slider("pips",{first:"pip",last:"pip"});
-        $("#voicSlider").slider({animate:"slow", min: 250, max: 3000, step: 50}).slider("float").slider("pips",{first:"pip",last:"pip"});
-		$("#clockSlider").slider({animate:"slow", max: 60}).slider("float").slider("pips",{first:"pip",last:"pip"});
+        // $("#tempSlider").slider({animate:"slow", min:-50, max: 50})
+        $("#tempSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valTemp ?>');
+        $("#humiSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valHumi ?>');
+        // $("#noisSlider").slider({animate:"slow", max: 180, step: 5})
+        $("#noisSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valNois ?>');
+        // $("#voicSlider").slider({animate:"slow", min: 250, max: 3000, step: 50})
+        $("#voicSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valVoic ?>');
+		$("#clockSlider").slider({animate:"slow", max: 60}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valClock ?>');
     });
 	window.onload = 
 	  function move() {
@@ -64,6 +68,7 @@
 				elem4.style.width = width + '%'; 
 			}
 		}
+
 		
 	};
 	
@@ -112,9 +117,11 @@
                 // listItem.html(data.message);
                 // $('#messages').prepend(listItem);
             }
+
         </script>
 	
     <div  class="container">
+    	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="cabecera">
 			<div class="logo">
 				<img src="{{ asset('/clock.ico') }}" style="max-width:70px; height:auto;">
@@ -261,6 +268,129 @@
 
 		</br>
 		
-        
+        <script>
+        $.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+	        }
+	    });
+	    var temp;
+	    var humi;
+	    var nois;
+	    var voic;
+	    var clock;
+
+        	$(document).ready(function(){
+        		
+        		
+			    
+				$("#tempSlider").slider({ change: function(event, ui){
+					humi = $('#humiSlider').slider("option", "value");
+				    nois = $('#noisSlider').slider("option", "value");
+				    voic = $('#voicSlider').slider("option", "value");
+				    clock = $('#clockSlider').slider("option", "value");
+					console.log(ui.value);
+					$.ajax({
+						type: "POST",
+						url: "/guardarConfiguracion",
+						data: { 
+							"valorTemp": ui.value,
+							"valorHumi": humi,
+							"valorNois": nois,
+							"valorVoic": voic,
+							"valorClock": clock
+						},
+						success: function(){
+							console.log("Se grabo");
+						}
+					})
+				} });
+		        $("#humiSlider").slider({ change: function(event, ui){
+		        	temp = $('#tempSlider').slider("option", "value");
+				    nois = $('#noisSlider').slider("option", "value");
+				    voic = $('#voicSlider').slider("option", "value");
+				    clock = $('#clockSlider').slider("option", "value");
+					console.log(ui.value);
+					$.ajax({
+						type: "POST",
+						url: "/guardarConfiguracion",
+						data: { 
+							"valorTemp": temp,
+							"valorHumi": ui.value,
+							"valorNois": nois,
+							"valorVoic": voic,
+							"valorClock": clock
+						},
+						success: function(){
+							console.log("Se grabo");
+						}
+					})
+		        }});
+		        $("#noisSlider").slider({ change: function(event, ui){
+		        	temp = $('#tempSlider').slider("option", "value");
+				    humi = $('#humiSlider').slider("option", "value");
+				    voic = $('#voicSlider').slider("option", "value");
+				    clock = $('#clockSlider').slider("option", "value");
+					console.log(ui.value);
+					$.ajax({
+						type: "POST",
+						url: "/guardarConfiguracion",
+						data: { 
+							"valorTemp": temp,
+							"valorHumi": humi,
+							"valorNois": ui.value,
+							"valorVoic": voic,
+							"valorClock": clock
+						},
+						success: function(){
+							console.log("Se grabo");
+						}
+					})
+		        }});
+		        $("#voicSlider").slider({ change: function(event, ui){
+		        	temp = $('#tempSlider').slider("option", "value");
+				    nois = $('#noisSlider').slider("option", "value");
+				    humi = $('#humiSlider').slider("option", "value");
+				    clock = $('#clockSlider').slider("option", "value");
+					console.log(ui.value);
+					$.ajax({
+						type: "POST",
+						url: "/guardarConfiguracion",
+						data: { 
+							"valorTemp": temp,
+							"valorHumi": humi,
+							"valorNois": nois,
+							"valorVoic": ui.value,
+							"valorClock": clock
+						},
+						success: function(){
+							console.log("Se grabo");
+						}
+					})
+		        }});
+				$("#clockSlider").slider({ change: function(event, ui){
+		        	temp = $('#tempSlider').slider("option", "value");
+				    nois = $('#noisSlider').slider("option", "value");
+				    voic = $('#voicSlider').slider("option", "value");
+				    humi = $('#humiSlider').slider("option", "value");
+					console.log(ui.value);
+					$.ajax({
+						type: "POST",
+						url: "/guardarConfiguracion",
+						data: { 
+							"valorTemp": temp,
+							"valorHumi": humi,
+							"valorNois": nois,
+							"valorVoic": voic,
+							"valorClock": ui.value
+						},
+						success: function(){
+							console.log("Se grabo");
+						}
+					})
+		        }});
+
+			});
+        </script>
     </div>
 @endsection
