@@ -12,6 +12,10 @@ use App\Events\HelloPusherEvent;
 use PushNotification;
 use App\bssConfig\firebase;
 use App\bssConfig\push;
+use App\Lugar as Lugar;
+use App\Vector as Vector;
+use DB;
+use DateTime;
 
 class RepositorioController extends Controller
 {
@@ -22,13 +26,18 @@ class RepositorioController extends Controller
     }
 
 	public function pushAlert(Request $request){
-        $message= $request->input('chat_text');
+        date_default_timezone_set('America/Bogota');
+        setlocale(LC_TIME,'es_ES');
 
+        $message= $request->input('chat_text');
+        
         $current = file_get_contents(app_path()."/bssStorage/datos.txt");
         $current .= $message."\n";
         file_put_contents(app_path()."/bssStorage/datos.txt", $current);
 
 		event(new HelloPusherEvent($message));
+
+        $today = new DateTime('now');
 
         $listSubstr = explode(",", $message);
         $val1 = intval($listSubstr[0]);
@@ -36,6 +45,19 @@ class RepositorioController extends Controller
         $val3 = intval($listSubstr[2]);
         $val4 = intval($listSubstr[3]);
 
+        try{
+            Vector::insert(array(
+                "temperatura"=> $val1,
+                "humedad"=> $val2,
+                "ruido" => $val3,
+                "voz" => $val4,
+                "fecha" => $today,
+                "lugar_id" => 1
+            ));
+
+        }catch (\Exception $e) {
+            error_log($e);
+        }
         $configValues = file_get_contents(app_path()."/bssStorage/config.txt");
         $listaValores = explode(",", $configValues);
         $valTemp = intval($listaValores[0]);
@@ -116,6 +138,16 @@ class RepositorioController extends Controller
                     'valVoic'=> $val4,
                     'valClock'=> $val5,
                     );
+
+        /*try{
+            Lugar::insert(array(
+                "nombre"=> "Sala",
+                "descripcion"=> "Esta es la sala"
+            ));
+
+        }catch (\Exception $e) {
+            error_log($e);
+        }*/
         return view('admin')->with($args);
     }
 
