@@ -51,24 +51,32 @@ body {
     width: 10%;
     height: 100%;
     background-color: #ff5a5a;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar2 {
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #3b5fe1;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar3 {
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #e7c311;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar4 {
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #0dca01;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #label1 {
     text-align: center; /* If you want to center it */
@@ -260,24 +268,32 @@ background-color: #0dca01;
     width: 1%;
     height: 100%;
     background-color: #ff5a5a;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar2 {
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #3b5fe1;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar3 {
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #e7c311;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #myBar4{
     position: absolute;
     width: 1%;
     height: 100%;
     background-color: #0dca01;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    transition: width .6s ease;
 }
 #label1 {
     text-align: center; /* If you want to center it */
@@ -414,4 +430,56 @@ background-color: #e7c311;
 #voicSlider .ui-slider-pip.ui-slider-pip-inrange .ui-slider-line {
 background-color: #0dca01;
 }
+}
+/* TABS STYLE */
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #ccc;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

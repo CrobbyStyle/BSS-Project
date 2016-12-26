@@ -26,6 +26,7 @@
 		var elem4 = document.getElementById("myBar4"); 
 		var width = 1;
 		var id = setInterval(frame1, 1);
+
 		function frame1() {
 			if (width >= 57) {
 				clearInterval(id);
@@ -71,54 +72,79 @@
 
 		
 	};
+
+	$(document).ready(function(){
+    	document.getElementById("defaultOpen").click();
+    });
+
+    function openTab(evt, tabID) {
+	    // Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+
+	    // Show the current tab, and add an "active" class to the link that opened the tab
+	    document.getElementById(tabID).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
 	
 </script>
 <script>
-            //instantiate a Pusher object with our Credential's key
-            var pusher = new Pusher('{{env("PUSHER_KEY")}}');
+    //instantiate a Pusher object with our Credential's key
+    var pusher = new Pusher('{{env("PUSHER_KEY")}}');
 
-            //Subscribe to the channel we specified in our Laravel Event
-            var channel = pusher.subscribe('my-channel');
+    //Subscribe to the channel we specified in our Laravel Event
+    var channel = pusher.subscribe('my-channel');
 
-            //Bind a function to a Event (the full Laravel class)
-            channel.bind('App\\Events\\HelloPusherEvent', addMessage);
+    //Bind a function to a Event (the full Laravel class)
+    channel.bind('App\\Events\\HelloPusherEvent', addMessage);
 
-            function addMessage(data)
-            {
+    function addMessage(data)
+    {
 
-                var listItem = $("<li class='list-group-item'></li>");
+        var listItem = $("<li class='list-group-item'></li>");
 
-                var val1 = data.message.split(",")[0];
-                var val2 = data.message.split(",")[1];
-                var val3 = data.message.split(",")[2];
-                var val4 = data.message.split(",")[3];
+        var val1 = data.message.split(",")[0];
+        var val2 = data.message.split(",")[1];
+        var val3 = data.message.split(",")[2];
+        var val4 = data.message.split(",")[3];
 
-                var elem1 = document.getElementById("myBar1"); 
-                var elem2 = document.getElementById("myBar2"); 
-                var elem3 = document.getElementById("myBar3"); 
-                var elem4 = document.getElementById("myBar4");
+        var elem1 = document.getElementById("myBar1"); 
+        var elem2 = document.getElementById("myBar2"); 
+        var elem3 = document.getElementById("myBar3"); 
+        var elem4 = document.getElementById("myBar4");
 
-                var label1 = document.getElementById("label1");				
-				var label2 = document.getElementById("label2");
-				var label3 = document.getElementById("label3");				 
-				var label4 = document.getElementById("label4");
-				
+        var label1 = document.getElementById("label1");				
+		var label2 = document.getElementById("label2");
+		var label3 = document.getElementById("label3");				 
+		var label4 = document.getElementById("label4");
+		
 
-				elem1.style.width = val1 + '%';
-				elem2.style.width = val2 + '%';
-				elem3.style.width = val3 + '%';
-				elem4.style.width = val4 + '%';
+		elem1.style.width = val1 + '%';
+		elem2.style.width = val2 + '%';
+		elem3.style.width = val3 + '%';
+		elem4.style.width = val4 + '%';
 
-				label1.innerHTML = val1;
-				label2.innerHTML = val2;
-				label3.innerHTML = val3;
-				label4.innerHTML = val4;
+		label1.innerHTML = val1;
+		label2.innerHTML = val2;
+		label3.innerHTML = val3;
+		label4.innerHTML = val4;
 
-                // listItem.html(data.message);
-                // $('#messages').prepend(listItem);
-            }
+        // listItem.html(data.message);
+        // $('#messages').prepend(listItem);
+    }
 
-        </script>
+</script>
 	
     <div  class="container">
     	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -130,8 +156,71 @@
 				<div class="title">Breaktime Sensing System - BSS</div>
 			</div>
 		</div>
-		<table width="100%" style="padding-top: 3%;padding-left: 5%;padding-right: 5%;">
-			<tr>
+		<ul class="tab">
+		  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Main')" id="defaultOpen">Main</a></li>
+		  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Controls')">Controls</a></li>
+		  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'About')">About</a></li>
+		</ul>
+		<div id="Main" class="tabcontent">
+			<table width="100%" style="padding-top: 3%;padding-left: 5%;padding-right: 5%;">
+				<tr>
+					<td class="status" >
+						<h5 style="text-align: center; color: green;">Office Status</h5>
+						<div style="border: 1px solid green;" width="100%" >
+							<table width="100%" style="padding-top: 5%;padding-left: 3%;padding-right: 3%;padding-bottom: 5%;">	
+								<td>
+									<tr style="height:5%">
+										<td style="width:95%; padding-bottom:10px" >
+											<div id="myProgress" style="height:20px">
+											  <div id="myBar1"> <div id="label1" style="height:20px; text-align:center; line-height:20px">32</div></div>
+											 
+											</div>
+										</td>
+										<td style="width:5%; color:green;"> ºC
+										</td>
+									</tr>
+									<tr>
+										<td style="width:95%; padding-bottom:10px" >
+											<div id="myProgress" style="height:20px">
+											  <div id="myBar2"><div id="label2" style="height:20px; text-align:center; line-height:20px">22</div></div>
+											  
+											</div>
+										</td>
+										<td style="width:5%; color:green;"> %
+										
+										</td>
+									</tr>
+									<tr>
+										<td style="width:95%; padding-bottom:10px" >
+											<div id="myProgress" style="height:20px">
+											  <div id="myBar3"> <div id="label3" style="height:20px; text-align:center; line-height:20px">60</div></div>
+											 
+											</div>
+										</td>
+										<td style="width:5%; color:green;"> Db
+										</td>
+									</tr>
+									<tr>
+										<td style="width:95%; padding-bottom:10px" >
+											<div id="myProgress" style="height:20px">
+											  <div id="myBar4"><div id="label4" style="height:20px; text-align:center; line-height:20px">45</div></div>
+											  
+											</div>
+										</td>
+										<td style="width:5%; color:green;"> Hz
+										</td>
+									</tr>
+								</td>
+							</table>
+						</div>
+						
+					</td>
+				
+			</table>
+		</div>
+		<div id="Controls" class="tabcontent">
+			<table width="70%" style="padding-top: 3%; padding-left: 5%; padding-right: 5%;">
+				<tr>
 				<td rowspan="2" class="controls" >
 				<h5 style="text-align: center; color: green;">Default Initial Parameters</h5>
 				
@@ -187,83 +276,26 @@
 							<td style="width:5%; color:green;"> Hz
 							</td>
 						</tr>
-					 </td>					 
-				</table>
-				</div>
-				</td>
-				<td class="status" >
-				<h5 style="text-align: center; color: green;">Environmental Status</h5>
-				<div style="border: 1px solid green;" width="100%" >
-					<table width="100%" style="padding-top: 5%;padding-left: 3%;padding-right: 3%;padding-bottom: 5%;">	
-						<td>
-							<tr>
-								<td style="width:95%;" >
-									<div id="myProgress">
-									  <div id="myBar1"> <div id="label1">32</div></div>
-									 
-									</div>
-								</td>
-								<td style="width:5%; color:green;"> ºC
-								</td>
-							</tr>
-							<tr>
-								<td style="width:95%;" >
-									<div id="myProgress">
-									  <div id="myBar2"><div id="label2">22</div></div>
-									  
-									</div>
-								</td>
-								<td style="width:5%; color:green;"> %
-								
-								</td>
-							</tr>
-							<tr>
-								<td style="width:95%;" >
-									<div id="myProgress">
-									  <div id="myBar3"> <div id="label3">60</div></div>
-									 
-									</div>
-								</td>
-								<td style="width:5%; color:green;"> Db
-								</td>
-							</tr>
-							<tr>
-								<td style="width:95%;" >
-									<div id="myProgress">
-									  <div id="myBar4"><div id="label4">45</div></div>
-									  
-									</div>
-								</td>
-								<td style="width:5%; color:green;"> Hz
-								</td>
-							</tr>
-						</td>
-					</table>
-				</div>
-				
-				</td>
-			</tr>
-			<tr>
-			<td class="status" >
-				<div style="border: 1px solid green;" width="100%" >
-				<h5 style="text-align: center; color: green;">Period time sensing</h5>
-					<table width="100%" style="padding-top: 5%;padding-left: 3%;padding-right: 3%;padding-bottom: 5%;">	
-						<td>
+						<tr>
 							<td style="width:10%;" >
 								<img  src="{{ asset('/5.png') }}" style="width:100% ; height:auto;">
 							</td>
 							<td style="width:85%;" >
-								<div id="clockControl" style=" padding-top: 8%; padding-left: 5%; padding-right: 5%;">
+								<div id="clockControl" style=" padding-top: 3%; padding-left: 5%; padding-right: 5%;">
 									<div id="clockSlider"></div>
 								</div>
 							</td>
 							<td style="width:5%; color:green;"> min
 							</td>
-						</td>
-					</table>
+						</tr>
+					 </td>		 
+				</table>
 				</div>
+				</td>
+				
 			</tr>
-		</table>
+			</table>
+		</div>
 <!-- 		<ul id="messages" class="list-group"> -->
 
 		</br>
