@@ -72,7 +72,7 @@ return [
             'port' => env('DB_PORT', '5432'),
             'database' => 'crobby',
             'username' => 'postgres',
-            'password' => '',
+            'password' => 'root',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

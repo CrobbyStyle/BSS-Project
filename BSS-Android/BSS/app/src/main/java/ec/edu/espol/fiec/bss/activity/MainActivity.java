@@ -18,9 +18,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.messaging.FirebaseMessaging;
-
+import com.google.firebase.messaging.RemoteMessage;
+import java.util.*;
 import ec.edu.espol.fiec.bss.R;
 import ec.edu.espol.fiec.bss.app.Config;
 import ec.edu.espol.fiec.bss.util.NotificationUtils;
@@ -156,6 +156,16 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
+    }
+
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        Map<String, String> data = remoteMessage.getData();
+        String myCustomKey = data.get("my_custom_key");
+
+
+
+        // Manage data
     }
 
 }

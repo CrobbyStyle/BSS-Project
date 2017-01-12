@@ -139,6 +139,24 @@
 		label2.innerHTML = val2;
 		label3.innerHTML = val3;
 		label4.innerHTML = val4;
+		console.log(val2);
+
+		$.ajax({
+			type: "POST",
+			url: "/recibirMensajePush",
+			data: { 
+				"valorTemp": val1,
+				"valorHumi": val2,
+				"valorNois": val3,
+				"valorVoic": val4
+			},
+			success: function(){
+				console.log("Pusher Event Triggered");
+			},
+			error: function(xhr){
+				console.log(xhr.responseText);
+			}
+		})
 
         // listItem.html(data.message);
         // $('#messages').prepend(listItem);
