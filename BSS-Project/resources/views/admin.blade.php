@@ -15,7 +15,7 @@
         // $("#noisSlider").slider({animate:"slow", max: 180, step: 5})
         $("#noisSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valNois ?>');
         // $("#voicSlider").slider({animate:"slow", min: 250, max: 3000, step: 50})
-        $("#voicSlider").slider({animate:"slow"}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valVoic ?>');
+
 		$("#clockSlider").slider({animate:"slow", max: 60}).slider("float").slider("pips",{first:"pip",last:"pip"}).slider("option", "value", '<?php echo $valClock ?>');
     });
 	window.onload = 
@@ -23,7 +23,7 @@
 		var elem1 = document.getElementById("myBar1"); 
 		var elem2 = document.getElementById("myBar2"); 
 		var elem3 = document.getElementById("myBar3"); 
-		var elem4 = document.getElementById("myBar4"); 
+		//var elem4 = document.getElementById("myBar4"); 
 		var width = 1;
 		var id = setInterval(frame1, 1);
 
@@ -59,14 +59,14 @@
 			}
 		}
 		
-		var width4 = 1;
-		var id4 = setInterval(frame4, 1);
+		//var width4 = 1;
+		//var id4 = setInterval(frame4, 1);
 		function frame4() {
 			if (width >= 45) {
-				clearInterval(id4);
+				//clearInterval(id4);
 			}else {
 				width++; 
-				elem4.style.width = width + '%'; 
+				//elem4.style.width = width + '%'; 
 			}
 		}
 
@@ -117,28 +117,28 @@
         var val1 = data.message.split(",")[0];
         var val2 = data.message.split(",")[1];
         var val3 = data.message.split(",")[2];
-        var val4 = data.message.split(",")[3];
+        //var val4 = data.message.split(",")[3];
 
         var elem1 = document.getElementById("myBar1"); 
         var elem2 = document.getElementById("myBar2"); 
         var elem3 = document.getElementById("myBar3"); 
-        var elem4 = document.getElementById("myBar4");
+        //var elem4 = document.getElementById("myBar4");
 
         var label1 = document.getElementById("label1");				
 		var label2 = document.getElementById("label2");
 		var label3 = document.getElementById("label3");				 
-		var label4 = document.getElementById("label4");
+		//var label4 = document.getElementById("label4");
 		
 
 		elem1.style.width = val1 + '%';
 		elem2.style.width = val2 + '%';
 		elem3.style.width = val3 + '%';
-		elem4.style.width = val4 + '%';
+		//elem4.style.width = val4 + '%';
 
 		label1.innerHTML = val1;
 		label2.innerHTML = val2;
 		label3.innerHTML = val3;
-		label4.innerHTML = val4;
+		//abel4.innerHTML = val4;
 		console.log(val2);
 
 		$.ajax({
@@ -147,8 +147,7 @@
 			data: { 
 				"valorTemp": val1,
 				"valorHumi": val2,
-				"valorNois": val3,
-				"valorVoic": val4
+				"valorNois": val3
 			},
 			success: function(){
 				console.log("Pusher Event Triggered");
@@ -218,7 +217,7 @@
 										<td style="width:5%; color:green;"> Db
 										</td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td style="width:95%; padding-bottom:10px" >
 											<div id="myProgress" style="height:20px">
 											  <div id="myBar4"><div id="label4" style="height:20px; text-align:center; line-height:20px">45</div></div>
@@ -227,7 +226,7 @@
 										</td>
 										<td style="width:5%; color:green;"> Hz
 										</td>
-									</tr>
+									</tr> -->
 								</td>
 							</table>
 						</div>
@@ -282,7 +281,7 @@
 							<td style="width:5%; color:green;"> Db
 							</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td style="width:10%;" >
 								<img  src="{{ asset('/4.png') }}" style="width:100% ; height:auto;">
 							</td>
@@ -293,7 +292,7 @@
 							</td>
 							<td style="width:5%; color:green;"> Hz
 							</td>
-						</tr>
+						</tr> -->
 						<tr>
 							<td style="width:10%;" >
 								<img  src="{{ asset('/5.png') }}" style="width:100% ; height:auto;">
@@ -327,7 +326,7 @@
 	    var temp;
 	    var humi;
 	    var nois;
-	    var voic;
+	    //var voic;
 	    var clock;
 
         	$(document).ready(function(){
@@ -337,7 +336,7 @@
 				$("#tempSlider").slider({ change: function(event, ui){
 					humi = $('#humiSlider').slider("option", "value");
 				    nois = $('#noisSlider').slider("option", "value");
-				    voic = $('#voicSlider').slider("option", "value");
+				    //voic = $('#voicSlider').slider("option", "value");
 				    clock = $('#clockSlider').slider("option", "value");
 					console.log(ui.value);
 					$.ajax({
@@ -347,7 +346,6 @@
 							"valorTemp": ui.value,
 							"valorHumi": humi,
 							"valorNois": nois,
-							"valorVoic": voic,
 							"valorClock": clock
 						},
 						success: function(){
@@ -358,7 +356,7 @@
 		        $("#humiSlider").slider({ change: function(event, ui){
 		        	temp = $('#tempSlider').slider("option", "value");
 				    nois = $('#noisSlider').slider("option", "value");
-				    voic = $('#voicSlider').slider("option", "value");
+				    //voic = $('#voicSlider').slider("option", "value");
 				    clock = $('#clockSlider').slider("option", "value");
 					console.log(ui.value);
 					$.ajax({
@@ -368,7 +366,6 @@
 							"valorTemp": temp,
 							"valorHumi": ui.value,
 							"valorNois": nois,
-							"valorVoic": voic,
 							"valorClock": clock
 						},
 						success: function(){
@@ -379,7 +376,7 @@
 		        $("#noisSlider").slider({ change: function(event, ui){
 		        	temp = $('#tempSlider').slider("option", "value");
 				    humi = $('#humiSlider').slider("option", "value");
-				    voic = $('#voicSlider').slider("option", "value");
+				    //voic = $('#voicSlider').slider("option", "value");
 				    clock = $('#clockSlider').slider("option", "value");
 					console.log(ui.value);
 					$.ajax({
@@ -389,7 +386,6 @@
 							"valorTemp": temp,
 							"valorHumi": humi,
 							"valorNois": ui.value,
-							"valorVoic": voic,
 							"valorClock": clock
 						},
 						success: function(){
@@ -397,31 +393,31 @@
 						}
 					})
 		        }});
-		        $("#voicSlider").slider({ change: function(event, ui){
-		        	temp = $('#tempSlider').slider("option", "value");
-				    nois = $('#noisSlider').slider("option", "value");
-				    humi = $('#humiSlider').slider("option", "value");
-				    clock = $('#clockSlider').slider("option", "value");
-					console.log(ui.value);
-					$.ajax({
-						type: "POST",
-						url: "/guardarConfiguracion",
-						data: { 
-							"valorTemp": temp,
-							"valorHumi": humi,
-							"valorNois": nois,
-							"valorVoic": ui.value,
-							"valorClock": clock
-						},
-						success: function(){
-							console.log("Se grabo");
-						}
-					})
-		        }});
+		   //      $("#voicSlider").slider({ change: function(event, ui){
+		   //      	temp = $('#tempSlider').slider("option", "value");
+				 //    nois = $('#noisSlider').slider("option", "value");
+				 //    humi = $('#humiSlider').slider("option", "value");
+				 //    clock = $('#clockSlider').slider("option", "value");
+					// console.log(ui.value);
+					// $.ajax({
+					// 	type: "POST",
+					// 	url: "/guardarConfiguracion",
+					// 	data: { 
+					// 		"valorTemp": temp,
+					// 		"valorHumi": humi,
+					// 		"valorNois": nois,
+					// 		"valorVoic": ui.value,
+					// 		"valorClock": clock
+					// 	},
+					// 	success: function(){
+					// 		console.log("Se grabo");
+					// 	}
+					// })
+		   //      }});
 				$("#clockSlider").slider({ change: function(event, ui){
 		        	temp = $('#tempSlider').slider("option", "value");
 				    nois = $('#noisSlider').slider("option", "value");
-				    voic = $('#voicSlider').slider("option", "value");
+				    //voic = $('#voicSlider').slider("option", "value");
 				    humi = $('#humiSlider').slider("option", "value");
 					console.log(ui.value);
 					$.ajax({
@@ -431,7 +427,6 @@
 							"valorTemp": temp,
 							"valorHumi": humi,
 							"valorNois": nois,
-							"valorVoic": voic,
 							"valorClock": ui.value
 						},
 						success: function(){
