@@ -24,11 +24,13 @@ import java.util.*;
 import ec.edu.espol.fiec.bss.R;
 import ec.edu.espol.fiec.bss.app.Config;
 import ec.edu.espol.fiec.bss.util.NotificationUtils;
+import android.os.CountDownTimer;
 
 public class MainActivity extends AppCompatActivity  {
     private static final String TAG = MainActivity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView txtRegId, txtMessage;
+    public int bandera = 1;
 
     boolean pressed = false;
     @Override
@@ -58,7 +60,9 @@ public class MainActivity extends AppCompatActivity  {
                         String message = intent.getStringExtra("message");
                         Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
                         //txtMessage.setText(message);
-                        displayAlert();
+                        if(bandera==1) {
+                            displayTemp();
+                        }
 
                     }
 
@@ -73,6 +77,9 @@ public class MainActivity extends AppCompatActivity  {
         final AlertDialog alert = new AlertDialog.Builder(this).create();
         alert.setTitle("CONECCION A BSS");
         alert.setMessage("Usted se conecto al sistema BSS, recibirá alerta cuando exista un receso");
+
+
+
 
         final Button boton = (Button) findViewById(R.id.button5);
         boton.setOnClickListener(new View.OnClickListener() {
@@ -107,22 +114,40 @@ public class MainActivity extends AppCompatActivity  {
 
         Log.e(TAG, "Firebase reg id: " + regId);
 
-        if (!TextUtils.isEmpty(regId))
+       /* if (!TextUtils.isEmpty(regId))
             txtRegId.setText("Firebase Reg Id: " + regId);
         else
-            txtRegId.setText("Firebase Reg Id is not received yet!");
+           txtRegId.setText("Firebase Reg Id is not received yet!");*/
 
 
     }
 
-    private void displayAlert()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("BREAKTIME");
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
 
+
+    private void displayTemp(){
+        final AlertDialog tempo = new AlertDialog.Builder(this).create();
+        int tiempoS=70000;
+
+        new CountDownTimer(tiempoS, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                tempo.setTitle("ES HORA DE UN BREAK");
+                long seconds = millisUntilFinished/1000 % 60;
+                long minutes = (millisUntilFinished/1000 / 60 )%60;
+                tempo.setMessage("TIEMPO DE BREAK: \n "+minutes+ " MINUTOS " +seconds+" SEGUNDOS RESTANTES");
+                tempo.show();
+                bandera=0;
+            }
+
+            public void onFinish() {
+                tempo.setTitle("SE ACABO EL BREAK");
+                tempo.setMessage("HORA DE VOLVER A TRABAJAR!");
+                tempo.show();
+                bandera=1;
+            }
+        }.start();
+
+    }
 
     @Override
     protected void onResume() {
@@ -158,7 +183,7 @@ public class MainActivity extends AppCompatActivity  {
         moveTaskToBack(true);
     }
 
-    @Override
+
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Map<String, String> data = remoteMessage.getData();
         String myCustomKey = data.get("my_custom_key");
