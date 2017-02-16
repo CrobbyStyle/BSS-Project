@@ -167,7 +167,7 @@
     	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="cabecera">
 			<div class="logo">
-				<img src="{{ asset('/clock.ico') }}" style="max-width:70px; height:auto;">
+				<img src="{{ asset('/bss.png') }}" style="padding-top:10px;max-width:70px; height:auto;">
 			</div>
 			<div class="content">
 				<div class="title">Breaktime Sensing System - BSS</div>
@@ -182,8 +182,8 @@
 			<table width="100%" style="padding-top: 3%;padding-left: 5%;padding-right: 5%;">
 				<tr>
 					<td class="status" >
-						<h5 style="text-align: center; color: green;">Office Status</h5>
-						<div style="border: 1px solid green;" width="100%" >
+						<h5 style="text-align: center; color: #065a54;">Office Status</h5>
+						<div style="border: 1px solid #065a54;" width="100%" >
 							<table width="100%" style="padding-top: 5%;padding-left: 3%;padding-right: 3%;padding-bottom: 5%;">	
 								<td>
 									<tr style="height:5%">
@@ -193,7 +193,7 @@
 											 
 											</div>
 										</td>
-										<td style="width:5%; color:green;"> ºC
+										<td style="width:5%; color:#065a54;"> ºC
 										</td>
 									</tr>
 									<tr>
@@ -203,7 +203,7 @@
 											  
 											</div>
 										</td>
-										<td style="width:5%; color:green;"> %
+										<td style="width:5%; color:#065a54;"> %
 										
 										</td>
 									</tr>
@@ -214,7 +214,7 @@
 											 
 											</div>
 										</td>
-										<td style="width:5%; color:green;"> Db
+										<td style="width:5%; color:#065a54;"> Db
 										</td>
 									</tr>
 									<!-- <tr>
@@ -239,9 +239,9 @@
 			<table width="70%" style="padding-top: 3%; padding-left: 5%; padding-right: 5%;">
 				<tr>
 				<td rowspan="2" class="controls" >
-				<h5 style="text-align: center; color: green;">Default Initial Parameters</h5>
+				<h5 style="text-align: center; color: #065a54;">Default Initial Parameters</h5>
 				
-				<div style="border: 1px solid green;" width="100%" >
+				<div style="border: 1px solid #065a54;" width="100%" >
 				
 				<table width="100%" style="padding-top: 5%;padding-left: 3%;padding-right: 3%;padding-bottom: 5%;">	
 					<td>				
@@ -254,7 +254,7 @@
 									<div id="tempSlider"></div>
 								</div>
 							</td>
-							<td style="width:5%; color:green;"> ºC
+							<td style="width:5%; color:#065a54;"> ºC
 							</td>
 						</tr>
 						<tr>
@@ -266,7 +266,7 @@
 									<div id="humiSlider"></div>
 								</div>
 							</td>
-							<td style="width:5%; color:green;"> %
+							<td style="width:5%; color:#065a54;"> %
 							</td>
 						</tr>
 						<tr>
@@ -278,7 +278,7 @@
 									<div id="noisSlider"></div>
 								</div>
 							</td>
-							<td style="width:5%; color:green;"> Db
+							<td style="width:5%; color:#065a54;"> Db
 							</td>
 						</tr>
 						<!-- <tr>
@@ -302,7 +302,7 @@
 									<div id="clockSlider"></div>
 								</div>
 							</td>
-							<td style="width:5%; color:green;"> min
+							<td style="width:5%; color:#065a54;"> min
 							</td>
 						</tr>
 					 </td>		 

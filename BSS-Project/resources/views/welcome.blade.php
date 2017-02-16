@@ -26,7 +26,7 @@
             <div class="title">Breaktime Sensing System</div>
         </div>
 		<div class="content2">
-			<img src="{{ asset('/clock.ico') }}" style="width:150px;height:150px;">
+			<img src="{{ asset('/bss.png') }}" style="margin-top:30px;width:150px;height:120px;">
 		</div>
 		<div class="content2">
 			<a class="button" style="vertical-align:middle" href="{{url('/admin')}}"><span>Dar click para continuar</span></a>
